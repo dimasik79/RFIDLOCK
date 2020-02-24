@@ -7,13 +7,14 @@
 #include "settings.h"
 #include "ui_settings.h"
 
+
 QString pass;
 
-const QString path = "%USERPROFILE%\\Documents\\RFIDLOCK\\";
-QDir setting(path);
-QFile sgFile(path + "settings");
+//const QString path = ".\\conf\\";
+//QDir setting(path);
+QFile File("settings");
 
-QTextStream f(&sgFile);
+QTextStream f(&File);
 
 settings::settings(QWidget *parent) :
     QDialog(parent),
@@ -21,30 +22,13 @@ settings::settings(QWidget *parent) :
 {
 
     ui->setupUi(this);
+    setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
 
-    if(!setting.exists()){
+    File.open(QFile::NewOnly);
+    f << "0";
+    File.close();
 
-        if(QMessageBox::question(this, "Ошибка", "Не удалось найти папку настроек. Создать?") == QMessageBox::Yes){
-            setting.mkpath(path);
-            sgFile.open(QFile::ReadWrite | QFile::Text | QFile::NewOnly);
-            if(!sgFile.isOpen()){
-                QMessageBox::critical(this, "Ошибка", "Не удалось открыть файл настроек");
-            }
-            else{
-                f << "defaultpassword" << "\n";
-                sgFile.close();
-            }
-        }
-    }
 
-    sgFile.open(QFile::ReadWrite | QFile::Text);
-    if(!sgFile.isOpen()){
-        QMessageBox::critical(this, "Ошибка", "Не удалось открыть файл настроек");
-    }
-    else{
-        f >> pass;
-        sgFile.close();
-    }
 }
 
 
@@ -55,14 +39,23 @@ settings::~settings()
 
 void settings::on_pushButton_clicked()
 {
-    if (ui->lineEdit->text() == pass){
-        sgFile.open(QFile::ReadWrite | QFile::Text);
-        if(!sgFile.isOpen()){
+
+
+
+        File.open(QFile::ReadWrite | QFile::Text);
+        if(!File.isOpen()){
             QMessageBox::critical(this, "Ошибка", "Не удалось открыть файл настроек");
         }
         else{
-            f << ui->lineEdit_2->text();
-            sgFile.close();
+            f >> pass;
+            File.close();
+            if(ui->lineEdit->text() == pass){
+
+            File.open(QFile::WriteOnly);
+            f << ui->lineEdit_2->text() + "";
+            File.close();
+            }
         }
-    }
+
+
 }

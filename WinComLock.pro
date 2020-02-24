@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     additionaly.cpp \
+    card.cpp \
     comport.cpp \
     exitpass.cpp \
     main.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
     additionaly.h \
+    card.h \
     comport.h \
     exitpass.h \
     mainwindow.h \
@@ -32,6 +34,7 @@ HEADERS += \
 
 FORMS += \
     additionaly.ui \
+    card.ui \
     exitpass.ui \
     mainwindow.ui \
     settings.ui

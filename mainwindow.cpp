@@ -15,6 +15,10 @@
 #include <windows.h>
 #include <QMessageBox>
 #include <QProcess>
+#include <QFile>
+#include <QTextStream>
+#include <QString>
+#include <QtDebug>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -24,6 +28,11 @@
 LPCTSTR sPort = L"COM3";
 COM com;
 
+QFile cardId("cardid.txt");
+QTextStream card(&cardId);
+
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -31,10 +40,17 @@ MainWindow::MainWindow(QWidget *parent)
     //setWindowState(Qt::WindowMaximized);
 
     ui->setupUi(this);
+    setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+    //setWindowModality(Qt::WindowModal);
     setWindowState(Qt::WindowFullScreen);
+
      string comstat = com.InitCOM(sPort);
      QString qcomstat = QString::fromStdString(comstat);
     statusBar()->showMessage(qcomstat);
+
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -43,17 +59,35 @@ MainWindow::~MainWindow()
 }
 
 
-//void MainWindow::ComInit()
-//{
 
-//}
 
 
 void MainWindow::on_pushButton_clicked()
 {
-    /*QMessageBox::StandardButton shutdwn = QMessageBox::question(this, "Выключение?", "Действительно выключить?");
-    if(shutdwn == QMessageBox::Yes) QProcess::startDetached("shutdown -s -f -t 0");*/
     additionaly add;
     add.setModal(true);
     add.exec();
+}
+
+
+
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    cardId.open(QFile::ReadOnly);
+    QString l;
+    QString quid = QString::fromStdString(com.ReadUid());
+    quid.chop(1);
+
+
+
+
+    card >> l;
+
+    if(quid == l){
+        QCoreApplication::exit();
+    }
+    else statusBar()->showMessage("Неверный код");
+
 }
