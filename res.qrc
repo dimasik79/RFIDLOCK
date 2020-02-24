@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/fone.png</file>
+        <file>img/sharp_power_settings_new_black_48dp.png</file>
+    </qresource>
+</RCC>
