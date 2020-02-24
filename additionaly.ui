@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>182</width>
-    <height>116</height>
+    <height>171</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>10</x>
      <y>10</y>
      <width>160</width>
-     <height>83</height>
+     <height>141</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -41,6 +41,20 @@
      <widget class="QPushButton" name="pushButton_3">
       <property name="text">
        <string>UID Карты</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="text">
+       <string>О программе</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="text">
+       <string>О Qt</string>
       </property>
      </widget>
     </item>

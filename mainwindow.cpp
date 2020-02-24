@@ -12,13 +12,7 @@
 
 //   You should have received a copy of the GNU General Public License
 //   along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
-#include <windows.h>
-#include <QMessageBox>
-#include <QProcess>
-#include <QFile>
-#include <QTextStream>
-#include <QString>
-#include <QtDebug>
+
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -40,7 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
     //setWindowState(Qt::WindowMaximized);
 
     ui->setupUi(this);
-    setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+    //setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+    setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::WindowMinMaxButtonsHint | Qt::WindowStaysOnTopHint );
     //setWindowModality(Qt::WindowModal);
     setWindowState(Qt::WindowFullScreen);
 
@@ -51,6 +46,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
+}
+
+void MainWindow::closeEvent (QCloseEvent *event)
+{
+    event->ignore();
 }
 
 MainWindow::~MainWindow()

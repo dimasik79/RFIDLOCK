@@ -19,6 +19,14 @@
 #include <QMainWindow>
 #include <QFile>
 #include <QTextStream>
+#include <windows.h>
+#include <QMessageBox>
+#include <QProcess>
+
+
+#include <QString>
+#include <QtDebug>
+#include <QCloseEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,6 +43,7 @@ public:
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void closeEvent (QCloseEvent *event);
 
 
 
