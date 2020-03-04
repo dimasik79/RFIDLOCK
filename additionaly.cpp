@@ -58,7 +58,7 @@ void additionaly::on_pushButton_3_clicked()
 
 void additionaly::on_pushButton_4_clicked()
 {
-    QMessageBox::about(this, "О программе", "RFID LOCKER V1.1\n(C)2020 Lubsanov Dmitry aka dimasik79 aka dimasit\nСделано на Qt\n\nСмотрите https://github.com/dimasik79/RFIDLOCKER\nдДля подробностей");
+    QMessageBox::about(this, "О программе", "RFID LOCKER V1.1\n(C)2020 Lubsanov Dmitry aka dimasik79 aka dimasit\nСделано на Qt\n\nСмотрите https://github.com/dimasik79/RFIDLOCKER\nДля подробностей");
 
 }
 

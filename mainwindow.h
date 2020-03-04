@@ -22,6 +22,7 @@
 #include <windows.h>
 #include <QMessageBox>
 #include <QProcess>
+#include <QTime>
 
 
 #include <QString>

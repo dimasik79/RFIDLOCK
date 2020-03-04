@@ -16,6 +16,11 @@
 #include "comport.h"
 #include <iostream>
 
+#include <QTime>
+#include <QTimer>
+
+
+
 using namespace std;
 
 string COM::InitCOM(LPCTSTR sPort){
@@ -47,10 +52,17 @@ string COM::InitCOM(LPCTSTR sPort){
 }
 string COM::ReadUid(){
 
+
+
     DWORD iSize;
     char sReceivedChar;
     string uid;
-    while (true){
+
+
+
+
+    for(int i = 0; i < 70000000; i++){
+
 
         ReadFile(Port, &sReceivedChar, 1, &iSize, 0);/// получаем 1 байт
         if (iSize > 0 && sReceivedChar == '\n') {
@@ -64,6 +76,9 @@ string COM::ReadUid(){
 
 
     }
+    return "00000000\n";
 }
+
+
 
 
