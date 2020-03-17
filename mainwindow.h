@@ -19,7 +19,7 @@
 #include <QMainWindow>
 #include <QFile>
 #include <QTextStream>
-#include <windows.h>
+//#include <windows.h>
 #include <QMessageBox>
 #include <QProcess>
 #include <QTime>

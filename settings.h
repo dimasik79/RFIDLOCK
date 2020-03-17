@@ -18,6 +18,11 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include <QDir>
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
+#include <QLineEdit>
 
 
 namespace Ui {

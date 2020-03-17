@@ -14,9 +14,7 @@
 //   along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include <QtCore>
-#include <QFile>
-#include <QMessageBox>
+
 
 #include "exitpass.h"
 #include "ui_exitpass.h"

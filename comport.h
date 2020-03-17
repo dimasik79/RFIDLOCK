@@ -17,21 +17,22 @@
 #ifndef COMPORT_H
 #define COMPORT_H
 
-#include<windows.h>
+#include <QSerialPort>
+#include <QSerialPortInfo>
 #include<string>
 
-using namespace std;
+using std::string;
 
     class COM{
     public:
 
-    HANDLE Port;
+    //HANDLE Port;*
+    QSerialPort port;
 
 
+    QString InitCOM(QString portName);
 
-    string InitCOM(LPCTSTR sPort);
-
-    string ReadUid();
+    QString ReadUid();
 
 };
 

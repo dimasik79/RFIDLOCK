@@ -19,7 +19,7 @@
 #include "comport.h"
 #include "additionaly.h"
 
-LPCTSTR sPort = L"COM3";
+
 COM com;
 
 QFile cardId("cardid.txt");
@@ -41,8 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
     //setWindowModality(Qt::WindowModal);
     setWindowState(Qt::WindowFullScreen);
 
-     string comstat = com.InitCOM(sPort);
-     QString qcomstat = QString::fromStdString(comstat);
+
+     QString qcomstat = com.InitCOM("COM3");
     statusBar()->showMessage(qcomstat);
 
 
@@ -79,7 +79,7 @@ void MainWindow::on_pushButton_2_clicked()
 {
     cardId.open(QFile::ReadOnly);
     QString l;
-    QString quid = QString::fromStdString(com.ReadUid());
+    QString quid = com.ReadUid();
     quid.chop(1);
 
 

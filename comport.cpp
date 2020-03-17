@@ -14,63 +14,41 @@
 //   along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "comport.h"
-#include <iostream>
 
-#include <QTime>
-#include <QTimer>
+
+
 
 
 
 using namespace std;
 
-string COM::InitCOM(LPCTSTR sPort){
-    Port = CreateFile(sPort, GENERIC_READ | GENERIC_WRITE, NULL,0, OPEN_EXISTING, 0, NULL);
 
-    if (Port == INVALID_HANDLE_VALUE) {
-        if (GetLastError() == ERROR_FILE_NOT_FOUND) {
-            return "Порт не найден ";
-        }
-        return "Не удалось открыть порт";
+
+
+QString COM::InitCOM(QString portName){
+    port.setPortName(portName);
+    port.setBaudRate(QSerialPort::Baud9600);
+    port.setDataBits(QSerialPort::Data8);
+    port.setParity(QSerialPort::NoParity);
+    port.setFlowControl(QSerialPort::NoFlowControl);
+    port.open(QIODevice::ReadOnly);
+    if(port.error())return "ERROR";
+    else return "OK";
 }
 
-    DCB dcbSerialParalams = { 0 };
-    dcbSerialParalams.DCBlength = sizeof(dcbSerialParalams);
-    if (!GetCommState(Port, &dcbSerialParalams)){
-    return "Не удалось получить состояние порта";
-}
-
-    dcbSerialParalams.BaudRate = CBR_9600;
-    dcbSerialParalams.ByteSize = 8;
-    dcbSerialParalams.StopBits = ONESTOPBIT;
-    dcbSerialParalams.Parity = NOPARITY;
-
-    if (!SetCommState(Port, &dcbSerialParalams)){
-        return "Не удалось установить состояние порта";
-    }
-    return "OK";
-
-}
-string COM::ReadUid(){
-
-
-
-    DWORD iSize;
-    char sReceivedChar;
-    string uid;
-
-
-
-
+QString COM::ReadUid(){
+    QString uid;
     for(int i = 0; i < 70000000; i++){
 
 
-        ReadFile(Port, &sReceivedChar, 1, &iSize, 0);/// получаем 1 байт
-        if (iSize > 0 && sReceivedChar == '\n') {
+        char *n;
+        port.read(n, 1);/// получаем 1 байт
+        if (*n == '\n') {
             do{
-                ReadFile(Port, &sReceivedChar, 1, &iSize, 0);
-                if(iSize > 0 && sReceivedChar != '\n') uid+=sReceivedChar;
+                port.read(n, 1);
+                if(*n != '\n') uid+=*n;
             }
-            while(sReceivedChar != '\n');
+            while(*n != '\n');
             return uid;
         }
 
@@ -78,7 +56,4 @@ string COM::ReadUid(){
     }
     return "00000000\n";
 }
-
-
-
 

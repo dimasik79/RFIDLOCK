@@ -18,6 +18,9 @@
 #define EXITPASS_H
 
 #include <QDialog>
+#include <QtCore>
+#include <QFile>
+#include <QMessageBox>
 
 
 namespace Ui {

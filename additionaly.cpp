@@ -14,12 +14,7 @@
 //   along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 
-#include <QMessageBox>
-#include "exitpass.h"
 #include "additionaly.h"
-#include "ui_additionaly.h"
-#include "settings.h"
-#include "card.h"
 
 additionaly::additionaly(QWidget *parent) :
     QDialog(parent),

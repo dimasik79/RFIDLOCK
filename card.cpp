@@ -16,7 +16,7 @@
 
 #include "card.h"
 #include "ui_card.h"
-#include "mainwindow.cpp"
+
 
 QFile pwd("settings");
 QTextStream fs(&pwd);
@@ -29,8 +29,8 @@ Card::Card(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
-    string s = com.ReadUid();
-    uid = QString::fromStdString(s);
+    QString s = com.ReadUid();
+    uid = s;
     ui->label_2->setText(uid);
 
 }
