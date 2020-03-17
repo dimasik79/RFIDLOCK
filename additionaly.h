@@ -18,12 +18,7 @@
 #define ADDITIONALY_H
 
 #include <QDialog>
-#include <QMessageBox>
-#include "exitpass.h"
 
-#include "ui_additionaly.h"
-#include "settings.h"
-#include "card.h"
 
 namespace Ui {
 class additionaly;

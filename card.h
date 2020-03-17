@@ -18,7 +18,7 @@
 #define CARD_H
 
 #include <QDialog>
-#include "mainwindow.cpp"
+
 
 namespace Ui {
 class Card;

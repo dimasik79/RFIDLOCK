@@ -16,7 +16,7 @@
 
 #include "card.h"
 #include "ui_card.h"
-
+#include "mainwindow.cpp"
 
 QFile pwd("settings");
 QTextStream fs(&pwd);

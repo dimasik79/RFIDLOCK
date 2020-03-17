@@ -14,7 +14,11 @@
 //   along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 
 
-
+#include <QDir>
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
+#include <QLineEdit>
 
 #include "settings.h"
 #include "ui_settings.h"
