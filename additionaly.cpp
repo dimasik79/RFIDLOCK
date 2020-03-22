@@ -20,6 +20,7 @@
 #include "ui_additionaly.h"
 #include "settings.h"
 #include "card.h"
+#include "serialchange.h"
 
 additionaly::additionaly(QWidget *parent) :
     QDialog(parent),
@@ -65,4 +66,11 @@ void additionaly::on_pushButton_4_clicked()
 void additionaly::on_pushButton_5_clicked()
 {
     QMessageBox::aboutQt(this, "О Qt");
+}
+
+void additionaly::on_pushButton_6_clicked()
+{
+    SerialChange sc;
+    sc.setModal(true);
+    sc.exec();
 }

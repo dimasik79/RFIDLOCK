@@ -25,23 +25,26 @@ using namespace std;
 
 
 
-QString COM::InitCOM(QString portName){
+QString COM::InitSerial(QString portName){
     port.setPortName(portName);
     port.setBaudRate(QSerialPort::Baud9600);
     port.setDataBits(QSerialPort::Data8);
     port.setParity(QSerialPort::NoParity);
     port.setFlowControl(QSerialPort::NoFlowControl);
     port.open(QIODevice::ReadOnly);
-    if(port.error())return "ERROR";
+    if(port.error())return "err";
     else return "OK";
 }
 
-QString COM::ReadUid(){
+QString COM::ReadUID(){
     QString uid;
+    if(!port.error()){
     for(int i = 0; i < 70000000; i++){
 
 
         char *n;
+
+
         port.read(n, 1);/// получаем 1 байт
         if (*n == '\n') {
             do{
@@ -52,8 +55,8 @@ QString COM::ReadUid(){
             return uid;
         }
 
-
-    }
-    return "00000000\n";
 }
 
+}
+    return "00000000\n";
+}

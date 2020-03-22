@@ -37,24 +37,28 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->setupUi(this);
     //setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+#ifndef QT_DEBUG
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::WindowMinMaxButtonsHint | Qt::WindowStaysOnTopHint );
+#endif
     //setWindowModality(Qt::WindowModal);
     setWindowState(Qt::WindowFullScreen);
 
-
-     QString qcomstat = com.InitCOM("COM3");
+    cardId.open(QFile::ReadOnly);
+    QString dummy, l;
+    card >> dummy >> l;
+     QString qcomstat = com.InitSerial(l);
     statusBar()->showMessage(qcomstat);
 
 
 
 
 }
-
+#ifndef QT_DEBUG
 void MainWindow::closeEvent (QCloseEvent *event)
 {
     event->ignore();
 }
-
+#endif
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -79,7 +83,7 @@ void MainWindow::on_pushButton_2_clicked()
 {
     cardId.open(QFile::ReadOnly);
     QString l;
-    QString quid = com.ReadUid();
+    QString quid = com.ReadUID();
     quid.chop(1);
 
 

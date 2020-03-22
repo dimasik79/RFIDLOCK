@@ -22,12 +22,15 @@
 
 #include <QMessageBox>
 #include <QProcess>
-#include <QTime>
+
 
 
 #include <QString>
-#include <QtDebug>
 #include <QCloseEvent>
+
+#ifdef QT_DEBUG
+#include <QtDebug>
+#endif
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,7 +47,9 @@ public:
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+#ifndef QT_DEBUG
     void closeEvent (QCloseEvent *event);
+#endif
 
 
 

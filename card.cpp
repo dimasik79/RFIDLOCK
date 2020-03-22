@@ -29,7 +29,7 @@ Card::Card(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
-    QString s = com.ReadUid();
+    QString s = com.ReadUID();
     uid = s;
     ui->label_2->setText(uid);
 

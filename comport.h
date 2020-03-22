@@ -30,9 +30,9 @@ using std::string;
     QSerialPort port;
 
 
-    QString InitCOM(QString portName);
+    QString InitSerial(QString portName);
 
-    QString ReadUid();
+    QString ReadUID();
 
 };
 
