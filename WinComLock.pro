@@ -1,4 +1,4 @@
-QT       += core gui serialport
+QT       += core gui serialport concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,6 +25,7 @@ SOURCES += \
     exitpass.cpp \
     main.cpp \
     mainwindow.cpp \
+    serialchange.cpp \
     settings.cpp
 
 HEADERS += \
@@ -33,6 +34,7 @@ HEADERS += \
     comport.h \
     exitpass.h \
     mainwindow.h \
+    serialchange.h \
     settings.h
 
 FORMS += \
@@ -40,6 +42,7 @@ FORMS += \
     card.ui \
     exitpass.ui \
     mainwindow.ui \
+    serialchange.ui \
     settings.ui
 
 # Default rules for deployment.
@@ -50,5 +53,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     COPYING
 
-RESOURCES += \
-    res.qrc
+RESOURCES +=
